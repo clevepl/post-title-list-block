@@ -6,9 +6,21 @@
 	"title": "Post Title List Block",
 	"category": "widgets",
 	"icon": "smiley",
-	"description": "Example block written with ESNext standard and JSX support – build step required.",
+	"description": "Display post titles in a list",
 	"supports": {
 		"html": false
+	},
+	"attributes": {
+		"numberOfPostsToDisplay": {
+			"type": "number",
+			"default": 5
+		},
+		"postTypesToObtain": {
+			"type": "array",
+			"items": {
+				"type": "object"
+			}
+		}
 	},
 	"textdomain": "post-title-list-block",
 	"editorScript": "file:./index.js",

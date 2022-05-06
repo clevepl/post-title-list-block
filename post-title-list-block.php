@@ -1,11 +1,11 @@
 <?php
 /**
  * Plugin Name:       Post Title List Block
- * Description:       Example block written with ESNext standard and JSX support – build step required.
- * Requires at least: 5.8
+ * Description:       Display post titles in a list
+ * Requires at least: 5.9
  * Requires PHP:      7.0
  * Version:           0.1.0
- * Author:            The WordPress Contributors
+ * Author:            Will Skora
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       post-title-list-block
@@ -21,6 +21,43 @@
  * @see https://developer.wordpress.org/reference/functions/register_block_type/
  */
 function cpl_post_title_list_block_block_init() {
-	register_block_type( __DIR__ . '/build' );
+	register_block_type(
+		__DIR__ . '/build',
+		array(
+			'render_callback' => 'render_latest_post_block',
+		)
+	);
 }
+
 add_action( 'init', 'cpl_post_title_list_block_block_init' );
+
+
+function render_latest_post_block( $attributes ) {
+	$args = array(
+		'posts_per_page'         => $attributes['numberOfPostsToDisplay'],
+		'ignore_sticky_posts'    => 1,
+		'no_found_rows'          => true,
+		'post_status'            => array( 'publish' ),
+		'post_type'              => array( 'podcast_episode' ),
+		'update_post_term_cache' => false,
+	);
+	do_action( 'qm/debug', $attributes );
+
+	$episode_list_query = new WP_Query( $args );
+
+	if ( $episode_list_query->have_posts() ) {
+		$teh_html .= '<ul ' . get_block_wrapper_attributes() . '>';
+	}
+	while ( $episode_list_query->have_posts() ) {
+		$episode_list_query->the_post();
+		$post_id   = get_the_ID();
+		$teh_html .= sprintf(
+			'<li><a href="%1$s">%2$s</a>',
+			esc_url( get_permalink( $post_id ) ),
+			esc_html( get_the_title( $post_id ) ),
+			'</li>'
+		);
+	}
+	$teh_html .= '</ul>';
+		return $teh_html;
+}
