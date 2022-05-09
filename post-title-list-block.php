@@ -1,11 +1,11 @@
 <?php
 /**
  * Plugin Name:       Post Title List Block
- * Description:       Display post titles in a list
+ * Description:       Display recently published posts' titles as a list
  * Requires at least: 5.9
  * Requires PHP:      7.0
  * Version:           0.1.0
- * Author:            Will Skora
+ * Author:            Will Skora and the CPL Team
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       post-title-list-block

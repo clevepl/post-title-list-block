@@ -1,14 +1,16 @@
 === Post Title List Block ===
-Contributors:      The WordPress Contributors
+Contributors:      Will Skora
 Tags:              block
 Tested up to:      5.9
 Stable tag:        0.1.0
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
-Example block written with ESNext standard and JSX support – build step required.
+Block that displays recently published posts within a list.
 
 == Description ==
+
+Created using WordPress' create-block.
 
 This is the long description. No limit, and you can use Markdown (as well as in the following sections).
 
@@ -31,9 +33,9 @@ e.g.
 
 An answer to that question.
 
-= What about foo bar? =
+= What about other post types? =
 
-Answer to foo bar dilemma.
+I will add that.
 
 == Screenshots ==
 
@@ -41,7 +43,6 @@ Answer to foo bar dilemma.
 the /assets directory or the directory that contains the stable readme.txt (tags or trunk). Screenshots in the /assets
 directory take precedence. For example, `/assets/screenshot-1.png` would win over `/tags/4.3/screenshot-1.png`
 (or jpg, jpeg, gif).
-2. This is the second screen shot
 
 == Changelog ==
 

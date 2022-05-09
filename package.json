@@ -1,8 +1,8 @@
 {
 	"name": "post-title-list-block",
 	"version": "0.1.0",
-	"description": "Display post titles in a list",
-	"author": "Will Skora",
+	"description": "Display recently published posts' titles as a list",
+	"author": "Will Skora and the CPL Team",
 	"license": "GPL-2.0-or-later",
 	"main": "build/index.js",
 	"scripts": {

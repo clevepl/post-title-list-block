@@ -6,7 +6,7 @@
 	"title": "Post Title List Block",
 	"category": "widgets",
 	"icon": "index-card",
-	"description": "Display post titles in a list",
+	"description": "Display recently published posts' titles as a list",
 	"supports": {
 		"html": false
 	},
