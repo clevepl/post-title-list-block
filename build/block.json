@@ -5,7 +5,7 @@
 	"version": "0.1.0",
 	"title": "Post Title List Block",
 	"category": "widgets",
-	"icon": "smiley",
+	"icon": "index-card",
 	"description": "Display post titles in a list",
 	"supports": {
 		"html": false

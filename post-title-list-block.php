@@ -38,7 +38,7 @@ function render_latest_post_block( $attributes ) {
 		'ignore_sticky_posts'    => 1,
 		'no_found_rows'          => true,
 		'post_status'            => array( 'publish' ),
-		'post_type'              => array( 'podcast_episode' ),
+		'post_type'              => array ( 'podcast_episode '),
 		'update_post_term_cache' => false,
 	);
 	do_action( 'qm/debug', $attributes );

@@ -52,14 +52,20 @@ export default function Edit({
 }) {
 	return (
 		<ul {...useBlockProps()}>
-			<li>Example list of an item that will be fetchable</li>
-			<li>Will fetch different post types</li>
 			<li>
-				and <a href="https://linktothatpost.com">a too these posts </a>
+				This will display a list of titles on the front-end of the
+				website.
+			</li>
+			<li>
+				and{' '}
+				<a href="https://linktothatpost.com">
+					will hyperlink to each of these posts
+				</a>
+				.
 			</li>
 			<InspectorControls>
 				<PanelBody
-					title={__('settings', 'cpl')}
+					title={__('Settings', 'cpl')}
 					initialOpen={true}
 				></PanelBody>
 				<QueryControls />
@@ -70,7 +76,7 @@ export default function Edit({
 						setAttributes({ numberOfPostsToDisplay: value })
 					}
 					min={1}
-					max={1000}
+					max={500}
 				/>
 			</InspectorControls>
 		</ul>
