@@ -67,6 +67,30 @@ export default function Edit({ attributes, setAttributes }) {
 		"wp_template_part",
 		"wp_template",
 	];
+	let choices = [];
+	let filled = false;
+	choices.push({ value: 0, label: __("Select a post type", "osomblocks") });
+
+	wp.data.subscribe(() => {
+		postTypes = wp.data.select("core").getPostTypes({ per_page: -1 });
+
+		if (postTypes && !filled) {
+			postTypes.forEach((postTypes) => {
+				if (!excluded.includes(postTypes.slug))
+					choices.push({ value: postTypes.slug, label: postTypes.slug });
+			});
+			filled = true;
+		}
+	});
+
+	if (postTypes && !filled) {
+		postTypes.forEach((postTypes) => {
+			if (!excluded.includes(postTypes.slug))
+				choices.push({ value: postTypes.slug, label: postTypes.slug });
+		});
+		filled = true;
+	}
+
 	return (
 		<ul {...useBlockProps()}>
 			<li>
@@ -84,10 +108,11 @@ export default function Edit({ attributes, setAttributes }) {
 					<SelectControl
 						label={__("select post types:")}
 						value={postTypesToObtain}
+						options={choices}
 						onChange={(value) => setAttributes({ postTypesToObtain: value })}
 					/>
 					<RangeControl
-						label={__("Numberrr of posts to display")}
+						label={__("NumberRRrr of posts to display")}
 						value={numberOfPostsToDisplay}
 						onChange={(value) =>
 							setAttributes({ numberOfPostsToDisplay: value })
