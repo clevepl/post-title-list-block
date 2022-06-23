@@ -16,10 +16,8 @@
 			"default": 5
 		},
 		"postTypesToObtain": {
-			"type": "array",
-			"items": {
-				"type": "object"
-			}
+			"type": "string",
+			"default": "post"
 		}
 	},
 	"textdomain": "post-title-list-block",
