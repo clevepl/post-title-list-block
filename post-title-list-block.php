@@ -45,6 +45,8 @@ function render_latest_post_block( $attributes ) {
 
 	$episode_list_query = new WP_Query( $args );
 
+	$teh_html = '';
+
 	if ( $episode_list_query->have_posts() ) {
 		$teh_html .= '<ul ' . get_block_wrapper_attributes() . '>';
 	}

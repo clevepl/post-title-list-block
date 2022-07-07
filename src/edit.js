@@ -48,9 +48,12 @@ import "./editor.scss";
 
 console.log("this is the post tile block, the block is hot!");
 
-//need to fetch the post types,
-// then load those post types in an array or a dropdown list that can then
-// be selected by the (but I think i need to use useSelect so the postTypes list can always be updated?)
+/**
+ * need to fetch the post types,
+ *
+ * then load those post types in a SelectControl that can be accessed by the content editort
+ */
+//
 
 // so i think i need to take posttypestoObtain and (which is an attribute)
 
@@ -77,16 +80,17 @@ export default function Edit({ attributes, setAttributes }) {
 		if (postTypes && !filled) {
 			postTypes.forEach((postTypes) => {
 				if (!excluded.includes(postTypes.slug))
-					choices.push({ value: postTypes.slug, label: postTypes.slug });
+					choices.push({ value: postTypes.slug, label: postTypes.name });
 			});
 			filled = true;
 		}
 	});
 
+	// if I remove this; the post types are not loaded into the selectControl
 	if (postTypes && !filled) {
 		postTypes.forEach((postTypes) => {
 			if (!excluded.includes(postTypes.slug))
-				choices.push({ value: postTypes.slug, label: postTypes.slug });
+				choices.push({ value: postTypes.slug, label: postTypes.name });
 		});
 		filled = true;
 	}
@@ -106,7 +110,7 @@ export default function Edit({ attributes, setAttributes }) {
 			<InspectorControls>
 				<PanelBody title={__("Settings", "cpl")} initialOpen={true}>
 					<SelectControl
-						label={__("select post types:")}
+						label={__("Select post types:")}
 						value={postTypesToObtain}
 						options={choices}
 						onChange={(value) => setAttributes({ postTypesToObtain: value })}
