@@ -1,8 +1,8 @@
 === Post Title List Block ===
-Contributors:      Will Skora
+Contributors:      Will Skora & the CPL Team
 Tags:              block
-Tested up to:      5.9
-Stable tag:        0.1.0
+Tested up to:      6.0
+Stable tag:        0.1.1
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -10,7 +10,7 @@ Block that displays recently published posts within a list.
 
 == Description ==
 
-Created using WordPress' create-block.
+Created using WordPress' create-block; credit to [OsomPress](https://wordpress.org/plugins/osomblocks/) for techniques how to subscribe and load posts in the sidepanel.
 
 This is the long description. No limit, and you can use Markdown (as well as in the following sections).
 
@@ -27,16 +27,6 @@ e.g.
 1. Activate the plugin through the 'Plugins' screen in WordPress
 
 
-== Frequently Asked Questions ==
-
-= A question that someone might have =
-
-An answer to that question.
-
-= What about other post types? =
-
-I will add that.
-
 == Screenshots ==
 
 1. This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif). Note that the screenshot is taken from
@@ -46,8 +36,8 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 
 == Changelog ==
 
-= 0.1.0 =
-* Release
+= 0.1.1 =
+* First public Release
 
 == Arbitrary section ==
 
