@@ -8,6 +8,8 @@ License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
 Block that displays recently published posts within a list.
 
+Source code available at https://gitlab.com/cpl/post-title-list-block
+
 == Description ==
 
 Created using WordPress' create-block; credit to [OsomPress](https://wordpress.org/plugins/osomblocks/) for techniques how to subscribe and load posts in the sidepanel.
