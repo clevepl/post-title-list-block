@@ -22,11 +22,8 @@ import { useSelect } from "@wordpress/data";
 import {
 	BaseControl,
 	PanelBody,
-	Placeholder,
-	RadioControl,
 	RangeControl,
 	SelectControl,
-	ToolbarGroup,
 } from "@wordpress/components";
 
 /**
@@ -46,8 +43,6 @@ import "./editor.scss";
  * @return {WPElement} Element to render.
  */
 
-console.log("this is the post tile block, the block is hot!");
-
 /**
  * need to fetch the post types,
  *
@@ -63,8 +58,10 @@ export default function Edit({ attributes, setAttributes }) {
 	var postTypes = wp.data.select("core").getPostTypes({ per_page: -1 });
 	let excluded = [
 		"attachment",
+		"announcement",
 		"nav_menu_item",
 		"revision",
+		"secondline_psb_post",
 		"wp_block",
 		"wp_navigation",
 		"wp_template_part",
@@ -72,7 +69,6 @@ export default function Edit({ attributes, setAttributes }) {
 	];
 	let choices = [];
 	let filled = false;
-	choices.push({ value: 0, label: __("Select a post type", "osomblocks") });
 
 	wp.data.subscribe(() => {
 		postTypes = wp.data.select("core").getPostTypes({ per_page: -1 });
@@ -80,7 +76,10 @@ export default function Edit({ attributes, setAttributes }) {
 		if (postTypes && !filled) {
 			postTypes.forEach((postTypes) => {
 				if (!excluded.includes(postTypes.slug))
-					choices.push({ value: postTypes.slug, label: postTypes.name });
+					choices.push({
+						value: postTypes.slug,
+						label: postTypes.name,
+					});
 			});
 			filled = true;
 		}
@@ -98,7 +97,8 @@ export default function Edit({ attributes, setAttributes }) {
 	return (
 		<ul {...useBlockProps()}>
 			<li>
-				This will display a list of titles on the front-end of the website.
+				This will display a list of titles on the front-end of the website once
+				published.
 			</li>
 			<li>
 				and{" "}
@@ -110,13 +110,13 @@ export default function Edit({ attributes, setAttributes }) {
 			<InspectorControls>
 				<PanelBody title={__("Settings", "cpl")} initialOpen={true}>
 					<SelectControl
-						label={__("Select post types:")}
+						label={__("Select post type:")}
 						value={postTypesToObtain}
 						options={choices}
 						onChange={(value) => setAttributes({ postTypesToObtain: value })}
 					/>
 					<RangeControl
-						label={__("NumberRRrr of posts to display")}
+						label={__("Number of posts to display")}
 						value={numberOfPostsToDisplay}
 						onChange={(value) =>
 							setAttributes({ numberOfPostsToDisplay: value })
