@@ -42,15 +42,15 @@ function render_latest_post_block( $attributes ) {
 		'update_post_term_cache' => false,
 	);
 
-	$episode_list_query = new WP_Query( $args );
+	$post_list_query = new WP_Query( $args );
 
 	$teh_html = '';
 
-	if ( $episode_list_query->have_posts() ) {
+	if ( $post_list_query->have_posts() ) {
 		$teh_html .= '<ul ' . get_block_wrapper_attributes() . '>';
 	}
-	while ( $episode_list_query->have_posts() ) {
-		$episode_list_query->the_post();
+	while ( $post_list_query->have_posts() ) {
+		$post_list_query->the_post();
 		$post_id   = get_the_ID();
 		$teh_html .= sprintf(
 			'<li><a href="%1$s">%2$s</a>',

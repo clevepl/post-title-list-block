@@ -3,7 +3,7 @@
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-i18n/
  */
-import { __ } from "@wordpress/i18n";
+import { __ } from '@wordpress/i18n';
 
 /**
  * React hook that is used to mark the block wrapper element.
@@ -15,16 +15,16 @@ import {
 	InspectorControls,
 	useBlockProps,
 	RichText,
-} from "@wordpress/block-editor";
+} from '@wordpress/block-editor';
 
-import { useSelect } from "@wordpress/data";
+import { useSelect } from '@wordpress/data';
 
 import {
 	BaseControl,
 	PanelBody,
 	RangeControl,
 	SelectControl,
-} from "@wordpress/components";
+} from '@wordpress/components';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -32,7 +32,7 @@ import {
  *
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
-import "./editor.scss";
+import './editor.scss';
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -55,23 +55,23 @@ import "./editor.scss";
 // modding ososmblocks
 export default function Edit({ attributes, setAttributes }) {
 	const { postTypesToObtain, numberOfPostsToDisplay } = attributes;
-	var postTypes = wp.data.select("core").getPostTypes({ per_page: -1 });
+	var postTypes = wp.data.select('core').getPostTypes({ per_page: -1 });
 	let excluded = [
-		"attachment",
-		"announcement",
-		"nav_menu_item",
-		"revision",
-		"secondline_psb_post",
-		"wp_block",
-		"wp_navigation",
-		"wp_template_part",
-		"wp_template",
+		'attachment',
+		'announcement',
+		'nav_menu_item',
+		'revision',
+		'secondline_psb_post',
+		'wp_block',
+		'wp_navigation',
+		'wp_template_part',
+		'wp_template',
 	];
 	let choices = [];
 	let filled = false;
 
 	wp.data.subscribe(() => {
-		postTypes = wp.data.select("core").getPostTypes({ per_page: -1 });
+		postTypes = wp.data.select('core').getPostTypes({ per_page: -1 });
 
 		if (postTypes && !filled) {
 			postTypes.forEach((postTypes) => {
@@ -97,26 +97,28 @@ export default function Edit({ attributes, setAttributes }) {
 	return (
 		<ul {...useBlockProps()}>
 			<li>
-				This will display a list of titles on the front-end of the website once
-				published.
+				This will display a list of titles on the front-end of the
+				website once published.
 			</li>
 			<li>
-				and{" "}
+				and{' '}
 				<a href="https://linktothatpost.com">
 					will hyperlink to each of these posts
 				</a>
 			</li>
 
 			<InspectorControls>
-				<PanelBody title={__("Settings", "cpl")} initialOpen={true}>
+				<PanelBody title={__('Settings', 'cpl')} initialOpen={true}>
 					<SelectControl
-						label={__("Select post type:")}
+						label={__('Select post type:')}
 						value={postTypesToObtain}
 						options={choices}
-						onChange={(value) => setAttributes({ postTypesToObtain: value })}
+						onChange={(value) =>
+							setAttributes({ postTypesToObtain: value })
+						}
 					/>
 					<RangeControl
-						label={__("Number of posts to display")}
+						label={__('Number of posts to display')}
 						value={numberOfPostsToDisplay}
 						onChange={(value) =>
 							setAttributes({ numberOfPostsToDisplay: value })
