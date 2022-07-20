@@ -4,7 +4,7 @@
  * Description:       Display recently published posts' titles as a list
  * Requires at least: 5.9
  * Requires PHP:      7.0
- * Version:           0.1.0
+ * Version:           0.1.1
  * Author:            Will Skora and the CPL Team
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
@@ -38,18 +38,19 @@ function render_latest_post_block( $attributes ) {
 		'ignore_sticky_posts'    => 1,
 		'no_found_rows'          => true,
 		'post_status'            => array( 'publish' ),
-		'post_type'              => array ( 'podcast_episode '),
+		'post_type'              => $attributes['postTypesToObtain'],
 		'update_post_term_cache' => false,
 	);
-	do_action( 'qm/debug', $attributes );
 
-	$episode_list_query = new WP_Query( $args );
+	$post_list_query = new WP_Query( $args );
 
-	if ( $episode_list_query->have_posts() ) {
+	$teh_html = '';
+
+	if ( $post_list_query->have_posts() ) {
 		$teh_html .= '<ul ' . get_block_wrapper_attributes() . '>';
 	}
-	while ( $episode_list_query->have_posts() ) {
-		$episode_list_query->the_post();
+	while ( $post_list_query->have_posts() ) {
+		$post_list_query->the_post();
 		$post_id   = get_the_ID();
 		$teh_html .= sprintf(
 			'<li><a href="%1$s">%2$s</a>',

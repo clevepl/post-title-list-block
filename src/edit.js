@@ -3,7 +3,7 @@
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-i18n/
  */
-import { __ } from "@wordpress/i18n";
+import { __ } from '@wordpress/i18n';
 
 /**
  * React hook that is used to mark the block wrapper element.
@@ -15,19 +15,16 @@ import {
 	InspectorControls,
 	useBlockProps,
 	RichText,
-} from "@wordpress/block-editor";
+} from '@wordpress/block-editor';
 
-import { useSelect } from "@wordpress/data";
+import { useSelect } from '@wordpress/data';
 
 import {
 	BaseControl,
 	PanelBody,
-	Placeholder,
-	RadioControl,
 	RangeControl,
 	SelectControl,
-	ToolbarGroup,
-} from "@wordpress/components";
+} from '@wordpress/components';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -35,7 +32,7 @@ import {
  *
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
-import "./editor.scss";
+import './editor.scss';
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -46,48 +43,82 @@ import "./editor.scss";
  * @return {WPElement} Element to render.
  */
 
-console.log("this is the post tile block, the block is hot!");
-
-//need to fetch the post types,
-// then load those post types in an array or a dropdown list that can then
-// be selected by the (but I think i need to use useSelect so the postTypes list can always be updated?)
+/**
+ * need to fetch the post types,
+ *
+ * then load those post types in a SelectControl that can be accessed by the content editort
+ */
+//
 
 // so i think i need to take posttypestoObtain and (which is an attribute)
 
 // modding ososmblocks
 export default function Edit({ attributes, setAttributes }) {
 	const { postTypesToObtain, numberOfPostsToDisplay } = attributes;
-	var postTypes = wp.data.select("core").getPostTypes({ per_page: -1 });
+	var postTypes = wp.data.select('core').getPostTypes({ per_page: -1 });
 	let excluded = [
-		"attachment",
-		"nav_menu_item",
-		"revision",
-		"wp_block",
-		"wp_navigation",
-		"wp_template_part",
-		"wp_template",
+		'attachment',
+		'announcement',
+		'nav_menu_item',
+		'revision',
+		'secondline_psb_post',
+		'wp_block',
+		'wp_navigation',
+		'wp_template_part',
+		'wp_template',
 	];
+	let choices = [];
+	let filled = false;
+
+	wp.data.subscribe(() => {
+		postTypes = wp.data.select('core').getPostTypes({ per_page: -1 });
+
+		if (postTypes && !filled) {
+			postTypes.forEach((postTypes) => {
+				if (!excluded.includes(postTypes.slug))
+					choices.push({
+						value: postTypes.slug,
+						label: postTypes.name,
+					});
+			});
+			filled = true;
+		}
+	});
+
+	// if I remove this; the post types are not loaded into the selectControl
+	if (postTypes && !filled) {
+		postTypes.forEach((postTypes) => {
+			if (!excluded.includes(postTypes.slug))
+				choices.push({ value: postTypes.slug, label: postTypes.name });
+		});
+		filled = true;
+	}
+
 	return (
 		<ul {...useBlockProps()}>
 			<li>
-				This will display a list of titles on the front-end of the website.
+				This will display a list of titles on the front-end of the
+				website once published.
 			</li>
 			<li>
-				and{" "}
+				and{' '}
 				<a href="https://linktothatpost.com">
 					will hyperlink to each of these posts
 				</a>
 			</li>
 
 			<InspectorControls>
-				<PanelBody title={__("Settings", "cpl")} initialOpen={true}>
+				<PanelBody title={__('Settings', 'cpl')} initialOpen={true}>
 					<SelectControl
-						label={__("select post types:")}
+						label={__('Select post type:')}
 						value={postTypesToObtain}
-						onChange={(value) => setAttributes({ postTypesToObtain: value })}
+						options={choices}
+						onChange={(value) =>
+							setAttributes({ postTypesToObtain: value })
+						}
 					/>
 					<RangeControl
-						label={__("Numberrr of posts to display")}
+						label={__('Number of posts to display')}
 						value={numberOfPostsToDisplay}
 						onChange={(value) =>
 							setAttributes({ numberOfPostsToDisplay: value })
