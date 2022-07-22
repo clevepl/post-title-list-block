@@ -6,9 +6,9 @@ Stable tag:        0.1.1
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
-Block that displays recently published posts within an unordered list element (ul).
+Block that displays recently published posts' titles within an unordered list element (ul).
 
-You can control the number of posts and the post type to load. 
+You can control the number of posts and the post type to load.
 
 Source code available at https://gitlab.com/cpl/post-title-list-block
 
