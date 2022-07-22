@@ -1,12 +1,14 @@
 === Post Title List Block ===
 Contributors:      Will Skora & the CPL Team
 Tags:              block
-Tested up to:      6.0
+Tested up to:      6.1
 Stable tag:        0.1.1
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
-Block that displays recently published posts within a list.
+Block that displays recently published posts within an unordered list element (ul).
+
+You can control the number of posts and the post type to load. 
 
 Source code available at https://gitlab.com/cpl/post-title-list-block
 
@@ -14,19 +16,20 @@ Source code available at https://gitlab.com/cpl/post-title-list-block
 
 Created using WordPress' create-block; credit to [OsomPress](https://wordpress.org/plugins/osomblocks/) for techniques how to subscribe and load posts in the sidepanel.
 
-This is the long description. No limit, and you can use Markdown (as well as in the following sections).
-
-For backwards compatibility, if this section is missing, the full length of the short description will be used, and
-Markdown parsed.
-
 == Installation ==
 
-This section describes how to install the plugin and get it working.
-
-e.g.
-
-1. Upload the plugin files to the `/wp-content/plugins/post-title-list-block` directory, or install the plugin through the WordPress plugins screen directly.
+1. Upload the plugin files to the `/wp-content/plugins/post-title-list-block` directory
 1. Activate the plugin through the 'Plugins' screen in WordPress
+
+== Development/Customization ==
+
+If you wish to heavily customize the block for your own use (e.g. restrict the available post types to select); you will need to complete the following (not very thorough)
+
+1. clone repository
+1. inside post-title-list-block directory, run `npm install`
+1. run `npm start` within that directory;
+1. make your code changes
+1. ; run `npm run build` ; additional build commands at the [create-block](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-create-block/#available-commands) site.
 
 
 == Screenshots ==
