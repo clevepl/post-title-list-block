@@ -8,7 +8,7 @@ License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
 Block that displays recently published posts' titles within an unordered list element (ul).
 
-You can control the number of posts and the post type to load.
+You can control the number of posts and the post type to load. Posts are always published in order of recently published.
 
 Source code available at https://gitlab.com/cpl/post-title-list-block
 
@@ -16,9 +16,13 @@ Source code available at https://gitlab.com/cpl/post-title-list-block
 
 Created using WordPress' create-block; credit to [OsomPress](https://wordpress.org/plugins/osomblocks/) for techniques how to subscribe and load posts in the sidepanel.
 
+== Notes ==
+
+You may need to click the block settings sidepanel and wait a second for the post types panel to appear.
+
 == Installation ==
 
-1. Upload the plugin files to the `/wp-content/plugins/post-title-list-block` directory
+1. [Download the plugin as a zip file](https://gitlab.com/cpl/post-title-list-block/-/archive/main/post-title-list-block-main.zip)
 1. Activate the plugin through the 'Plugins' screen in WordPress
 
 == Development/Customization ==
