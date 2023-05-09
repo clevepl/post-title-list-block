@@ -2,7 +2,7 @@
 Contributors:      Will Skora & the CPL Team
 Tags:              block
 Tested up to:      6.1
-Stable tag:        0.1.1
+Stable tag:        0.1.2
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -44,6 +44,9 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 (or jpg, jpeg, gif).
 
 == Changelog ==
+
+= 0.1.2 =
+* added UPDATE URI header
 
 = 0.1.1 =
 * First public Release

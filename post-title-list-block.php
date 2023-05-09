@@ -1,14 +1,16 @@
 <?php
 /**
  * Plugin Name:       Post Title List Block
+ * Plugin URI:        https://gitlab.com/cpl/post-title-list-block/
  * Description:       Display recently published posts' titles as a list
  * Requires at least: 5.9
  * Requires PHP:      7.0
- * Version:           0.1.1
+ * Version:           0.1.2
  * Author:            Will Skora and the CPL Team
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       post-title-list-block
+ * Update URI:        https://gitlab.com/cpl/post-title-list-block/
  *
  * @package           cpl
  */
